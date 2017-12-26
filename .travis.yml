@@ -32,3 +32,6 @@ script:
     tail $idempotence | grep -q 'changed=0.*failed=0' \
     && (printf 'Idempotence test: pass \n') \
     || (printf 'Idempotence test: fail \n' && exit 1)
+
+  # Run java check
+  - docker exec -t $container_id java -version
