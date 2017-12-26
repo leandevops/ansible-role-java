@@ -1,0 +1,14 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Andrey Larin
+  description: Installs java for linux
+  company: ""
+  license: ""
+  min_ansible_version: 2.0
+  platforms:
+    - name: Centos
+      versions:
+      - 6
+      - 7

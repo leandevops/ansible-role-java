@@ -1,0 +1,18 @@
+---
+- name: Installs openjdk Java.
+  package: "name={{ item }} state=installed"
+  with_items: "{{ openjdk_packages }}"
+  when: not install_oracle_java
+
+- name: Downloads oracle Java
+  get_url:
+    url:     "{{ java.jre_rpm_url }}"
+    headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
+    dest:    "{{ java.download_path }}/{{ java.rpm_filename }}.rpm"
+  when: install_oracle_java
+
+- name: Installs oracle Java
+  yum:
+    name: "{{ java.download_path }}/{{ java.rpm_filename }}.rpm"
+    state: present
+  when: install_oracle_java
