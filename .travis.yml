@@ -10,15 +10,14 @@ before_install:
   - export init="/usr/lib/systemd/systemd"
   - export opts="--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   - playbook="test.yml"
-
-before_script:
-  - echo 'roles_path = ../' > ansible.cfg
   
 script:
   # Download image
   - docker pull $repo
   
   # Run container
+  - echo 'roles_path = ../' > ansible.cfg
+  - ls -l $PWD
   - docker run -d -v="$PWD":/etc/ansible/roles/role_to_test:rw --name $container_id $opts $repo $init
   
   # Run lints.
