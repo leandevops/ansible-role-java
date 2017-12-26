@@ -16,11 +16,9 @@ script:
   - docker pull $repo
   
   # Run container
-  - echo "roles_path = ../" > ansible.cfg
   - docker run -d -v="$PWD":/etc/ansible/roles/role_to_test:rw --name $container_id $opts $repo $init
   
   # Run lints.
-  - docker exec -t $container_id ls -l /etc/ansible/roles/role_to_test/
   - docker exec -t $container_id ansible-playbook /etc/ansible/roles/role_to_test/tests/$playbook --syntax-check
   - docker exec -t $container_id ansible-lint /etc/ansible/roles/role_to_test/
   
