@@ -19,15 +19,15 @@ script:
   - docker run -d -v="$PWD":/etc/ansible/roles/role_to_test:rw --name $container_id $opts $repo $init
   
   # Run lints.
-  - docker exec --tty $container_id env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook --syntax-check
-  - docker exec --tty $container_id env TERM=xterm ansible-lint /etc/ansible/roles/role_under_test/
+  - docker exec --tty $container_id env TERM=xterm ansible-playbook /etc/ansible/roles/role_to_test/tests/$playbook --syntax-check
+  - docker exec --tty $container_id env TERM=xterm ansible-lint /etc/ansible/roles/role_to_test/
   
   # Run playbook.  
-  - docker exec $container_id env TERM=xterm env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook
+  - docker exec $container_id env TERM=xterm env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_to_test/tests/$playbook
   
   # Run idempotence check
   - idempotence=$(mktemp)
-  - docker exec $container_id env TERM=xterm env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook | tee -a $idempotence
+  - docker exec $container_id env TERM=xterm env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_to_test/tests/$playbook | tee -a $idempotence
   - |
     tail $idempotence | grep -q 'changed=0.*failed=0' \
     && (printf 'Idempotence test: pass \n') \
