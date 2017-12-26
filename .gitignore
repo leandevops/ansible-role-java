@@ -1,0 +1,3 @@
+tests/*.retry
+.vagrant/
+.gitlab-ci.yml
