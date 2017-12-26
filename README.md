@@ -1,4 +1,5 @@
 ## Ansible Role: Java
+[![Build Status](https://travis-ci.org/lestex/ansible-role-java.svg?branch=master)](https://travis-ci.org/lestex/ansible-role-java)
 
 This role installs java on centOS linux servers.
 
