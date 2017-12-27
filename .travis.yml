@@ -17,8 +17,8 @@ script:
   - docker run -d -v="$PWD":/etc/ansible/roles/role_to_test:rw --name $container_id $opts $repo $init
   
   # Run lints.
-  - docker exec -t $container_id ansible-playbook /etc/ansible/roles/role_to_test/tests/$playbook --syntax-check
-  - docker exec -t $container_id ansible-lint /etc/ansible/roles/role_to_test/
+  - docker exec -t $container_id ansible-playbook /etc/ansible/roles/role_to_test/tests/test.yml --syntax-check
+  - docker exec -t $container_id ansible-lint /etc/ansible/roles/role_to_test/*/*.yml
   
   # Run playbook.  
   - docker exec $container_id env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_to_test/tests/test.yml
