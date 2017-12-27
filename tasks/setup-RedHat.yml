@@ -1,8 +1,4 @@
 ---
-- name: Installs openjdk Java.
-  package: "name={{ item }} state=installed"
-  with_items: "{{ openjdk_packages }}"
-  when: not install_oracle_java
 
 - name: Downloads oracle Java
   get_url:

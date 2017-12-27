@@ -4,7 +4,11 @@
     java_packages: "{{ openjdk_packages | list }}"
   when: openjdk_packages is not defined
 
-# Setup/install tasks.
+- name: Installs openjdk Java.
+  package: "name={{ item }} state=installed"
+  with_items: "{{ openjdk_packages }}"
+  when: not install_oracle_java
+
 - include_tasks: setup-RedHat.yml
   when: ansible_os_family == 'RedHat'
 
