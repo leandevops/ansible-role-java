@@ -2,9 +2,11 @@
 services: docker
 
 env:
-  - repo=$DOCKERHUB_USERNAME/docker-centos7-ansible
+  - distro: centos7
+  - distro: ubuntu1604
 
 before_install:
+  - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible
   - export container_id=$(date +%s)
   - export init="/usr/lib/systemd/systemd"
   - export opts="--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
