@@ -2,7 +2,7 @@
 services: docker
 
 env:
-  - distro: 
+  - distro: centos7
   - distro: ubuntu1604
 
 before_install:
