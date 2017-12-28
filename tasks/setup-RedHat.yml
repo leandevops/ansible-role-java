@@ -1,17 +1,17 @@
 ---
 
 - name: Include version-specific variables for CetnOS.
-  include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"  
+  include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
 
 - name: Debugging run
   debug:
-    msg: "This is {{ java.jre_rpm_url }} and {{ java_version }}"
+    msg: "This is {{ java_version }} {{ urls[java_version] }}"
 
 - name: Downloads oracle Java
   get_url:
     url:     "{{ java.jre_rpm_url }}"
     headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
-    dest:    "{{ java.download_path }}/{{ java.rpm_filename }}.rpm"
+    dest:    "{{ download_path }}/{{ rpm_filename }}.rpm"
   when: install_oracle_java
 
 - name: Installs oracle Java

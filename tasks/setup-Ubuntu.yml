@@ -1,6 +1,6 @@
 ---
 - name: Include version-specific variables for Ubuntu.
-  include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"  
+  include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
 
 - name: Debugging run
   debug:
