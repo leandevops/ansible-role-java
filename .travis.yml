@@ -8,7 +8,14 @@ env:
 before_install:
   - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible
   - export container_id=$(date +%s)
-  - export init="/usr/lib/systemd/systemd"
+  - |
+    if [ $distro = 'centos7' ]; then
+      export init="/usr/lib/systemd/systemd"
+    fi
+  - |
+    if [ $distro = 'ubuntu1604' ]; then
+      export init="/lib/systemd/systemd"
+    fi
   - export opts="--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   
 script:
