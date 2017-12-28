@@ -10,6 +10,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provider :virtualbox do |vb|
       vb.name = 'centos7'
     end
+    config.vm.provision 'ansible' do |ansible|
+    
+      ansible.playbook = 'tests/test.yml'
+      ansible.become = true
+      ansible.galaxy_roles_path = '../'
+      ansible.compatibility_mode = '2.0'
+      # ansible.extra_vars = {
+      #   container: false
+      # }
+      # ansible.raw_arguments = ["-vvvv"]
+     
+    end
   end
 
   config.vm.define 'ubuntu16' do |ubuntu|
@@ -17,21 +29,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provider :virtualbox do |vb|
       vb.name = 'ubuntu16'
     end
-    config.vm.provision 'shell', inline: 'sudo apt-get update -y && sudo apt-get install -y python-minimal'
-    end
-  end
-
-  config.vm.provision 'ansible' do |ansible|
+    config.vm.provision 'shell', inline: 'sudo apt-get update -y; sudo apt-get install -y python-minimal'
+    config.vm.provision 'ansible' do |ansible|
     
-    ansible.playbook = 'tests/test.yml'
-    ansible.become = true
-    ansible.galaxy_roles_path = '../'
-    ansible.compatibility_mode = '2.0'
-    # ansible.extra_vars = {
-    #   container: false
-    # }
-    # ansible.raw_arguments = ["-vvvv"]
-   
+      ansible.playbook = 'tests/test.yml'
+      ansible.become = true
+      ansible.galaxy_roles_path = '../'
+      ansible.compatibility_mode = '2.0'
+      # ansible.extra_vars = {
+      #   container: false
+      # }
+      # ansible.raw_arguments = ["-vvvv"]     
+    end
   end
   
 end

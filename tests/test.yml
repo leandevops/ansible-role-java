@@ -1,4 +1,5 @@
 ---
 - hosts: all
   roles:
-    - role_to_test
+    - java
+    #- role_to_test
