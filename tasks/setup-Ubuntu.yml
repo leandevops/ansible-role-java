@@ -11,10 +11,9 @@
   delay: 10
 
 - name: List avalable java packages
-  command: apt cache policy java
-  register: javaver
+  shell: apt-cache policy java
+  register: result  
 
 - name: Debugging run
-  - debug:
-    var: javaver
-    verbosity: 2 
+  debug:
+    var: result
