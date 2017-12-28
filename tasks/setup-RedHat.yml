@@ -2,7 +2,7 @@
 
 - name: Debugging run
   debug:
-    msg: "This is {{ ansible_os_family }} and {{ ansible_distribution | lower }}-{{ ansible_distribution_version | split('.')[0] }}"
+    msg: "This is {{ ansible_os_family }} and {{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}"
 
 - name: Downloads oracle Java
   get_url:
