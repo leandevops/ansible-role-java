@@ -1,9 +1,22 @@
 ---
-java_version: 8u141
+# Java version, supports :
+# 8u144
+# 8u141
+# 8u131
+# 8u121
+
+java_version: 8u144
+
+# JAVA_HOME env variable
 java_home: "/opt/java"
 
+# install oracle java
+# if True installs rpm from oracle
+# if False installs from centos repos
 install_oracle_java: True
-jre_or_jdk: jre
+
+# jre / jdk
+jre_or_jdk: jdk
 
 # JDK version options include:
 #   - java

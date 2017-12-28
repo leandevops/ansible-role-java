@@ -5,3 +5,11 @@
 - name: Debugging run
   debug:
     msg: "Java ppa is {{ java_ppa }} and {{ java_version }}"
+
+- name: Install WebUpd8 Team Java PPA (for Oracle Java)
+  apt_repository: repo={{ java_ppa }} state=present
+  when: install_oracle_java
+  register: webupd8ppa
+  until: webupd8ppa|success
+  retries: 5
+  delay: 10
