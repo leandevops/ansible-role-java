@@ -3,7 +3,7 @@ services: docker
 
 env:
   - distro: centos7
-  - distro: ubuntu1604
+  - distro: ubuntu16
 
 before_install:
   - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible
