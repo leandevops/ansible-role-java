@@ -1,5 +1,9 @@
 ---
-
+---
+- name: Debugging run
+  debug:
+    msg: "This is {{ ansible_os_family }} and {{ ansible_distribution }}-{{ ansible_distribution_version }}"
+    
 - name: Downloads oracle Java
   get_url:
     url:     "{{ java.jre_rpm_url }}"
