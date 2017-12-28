@@ -13,7 +13,7 @@
   when: ansible_os_family == 'RedHat'
 
 - include_tasks: setup-Ubuntu.yml
-  when: ansible_os_family == 'Ubuntu'
+  when: ansible_os_family == 'Debian'
 
 # Environment setup.
 - name: Set JAVA_HOME if configured.
