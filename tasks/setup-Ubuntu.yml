@@ -1,4 +1,7 @@
 ---
+- name: Include version-specific variables for Ubuntu.
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml"  
+
 - name: Debugging run
   debug:
-    msg: "This is {{ ansible_os_family }} and {{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}"
+    msg: "Java ppa is {{ java_ppa }}"
