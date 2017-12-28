@@ -1,7 +1,7 @@
 ---
 
 - name: Include version-specific variables for CetnOS.
-  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml"  
+  include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"  
 
 - name: Debugging run
   debug:
