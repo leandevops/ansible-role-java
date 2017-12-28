@@ -3,11 +3,15 @@ services: docker
 
 env:
   - distro: centos7
-  - distro: ubuntu16
+  - distro: ubuntu1604
 
 before_install:
   - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible
   - export container_id=$(date +%s)
+  - |
+    if [ $distro = 'ubuntu1604' ]; then
+      init="/lib/systemd/systemd"
+    fi
   - export init="/usr/lib/systemd/systemd"
   - export opts="--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
   
