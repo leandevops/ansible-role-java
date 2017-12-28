@@ -17,6 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provider :virtualbox do |vb|
       vb.name = 'ubuntu16'
     end
+    config.vm.provision 'shell', inline: 'sudo apt-get update -y && sudo apt-get install -y python-minimal'
+    end
   end
 
   config.vm.provision 'ansible' do |ansible|
