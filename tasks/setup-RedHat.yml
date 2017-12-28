@@ -11,7 +11,7 @@
   get_url:
     url:     "{{ java.jre_rpm_url }}"
     headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
-    dest:    "{{ download_path }}/{{ rpm_filename }}.rpm"
+    dest:    "{{ download_dir }}/{{ rpm_filename }}.rpm"
   when: install_oracle_java
 
 - name: Installs oracle Java
