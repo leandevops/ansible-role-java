@@ -1,0 +1,4 @@
+---
+- name: Debugging run
+  debug:
+    msg: "This is {{ ansible_os_family }}"
