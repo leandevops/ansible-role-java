@@ -9,7 +9,6 @@ java_version: 8u141
 # JAVA_HOME env variable
 java_home: "/opt/java"
 
-# install oracle java
 # if True installs rpm from oracle
 # if False installs from centos repos
 install_oracle_java: True

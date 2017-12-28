@@ -2,10 +2,6 @@
 - name: Include version-specific variables for Ubuntu.
   include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
 
-- name: Debugging run
-  debug:
-    msg: "Java ppa is {{ java_ppa }} and {{ java_version }}"
-
 - name: Install WebUpd8 Team Java PPA (for Oracle Java)
   apt_repository: repo={{ java_ppa }} state=present
   when: install_oracle_java
@@ -13,3 +9,12 @@
   until: webupd8ppa|success
   retries: 5
   delay: 10
+
+- name: List avalable java packages
+  command: apt cache policy java
+  register: javaver
+
+- name: Debugging run
+  - debug:
+    var: javaver
+    verbosity: 2 
