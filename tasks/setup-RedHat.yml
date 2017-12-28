@@ -5,7 +5,7 @@
 
 - name: Debugging run
   debug:
-    msg: "This is {{ java.jre_rpm_url }}"
+    msg: "This is {{ java.jre_rpm_url }} and {{ java_version }}"
 
 - name: Downloads oracle Java
   get_url:

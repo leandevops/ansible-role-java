@@ -4,4 +4,4 @@
 
 - name: Debugging run
   debug:
-    msg: "Java ppa is {{ java_ppa }}"
+    msg: "Java ppa is {{ java_ppa }} and {{ java_version }}"
