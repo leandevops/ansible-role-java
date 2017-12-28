@@ -12,6 +12,6 @@
 
 - name: Installs oracle Java
   yum:
-    name: "{{ download_dir }}/{{ download_file }}.rpm"
+    name: "{{ download_dir }}/{{ download_file }}"
     state: present
   when: install_oracle_java

@@ -3,6 +3,8 @@ java_version: 8u141
 java_home: "/opt/java"
 
 install_oracle_java: True
+jre_or_jdk: jre
+
 # JDK version options include:
 #   - java
 #   - java-1.7.0-openjdk
