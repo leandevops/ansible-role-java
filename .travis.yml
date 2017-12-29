@@ -20,24 +20,21 @@ before_install:
   - export container_id=$(date +%s)
 
 script:
+  # - pip2 show docker-py
 
-  # Check versions
-  - molecule --version
-  - pip2 show docker-py
-  
   # Download image
   - docker pull $repo
-  
+
   # Run container
   - docker run -d -v="$PWD":/etc/ansible/roles/role_to_test:rw --name $container_id $opts $repo $init
-  
+
   # Run lints.
   - docker exec -t $container_id ansible-playbook /etc/ansible/roles/role_to_test/tests/test.yml --syntax-check
   - docker exec -t $container_id ansible-lint /etc/ansible/roles/role_to_test/*/*.yml
-  
-  # Run playbook.  
+
+  # Run playbook.
   - docker exec $container_id env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_to_test/tests/test.yml
-  
+
   # Run idempotence check
   - idempotence=$(mktemp)
   - docker exec $container_id env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_to_test/tests/test.yml | tee -a $idempotence
