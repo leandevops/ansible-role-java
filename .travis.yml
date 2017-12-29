@@ -16,8 +16,9 @@ matrix:
         - opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 before_install:
-  - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible  
-  
+  - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible
+  - export container_id=$(date +%s)
+
 script:
   # Download image
   - docker pull $repo
