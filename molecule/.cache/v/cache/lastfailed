@@ -1,3 +1,0 @@
-{
-  "default/tests/test_default.py::test_java_installed[ansible://docker-ubuntu1604-ansible-1\\.8\\.0_[0-9]+$]": true
-}
