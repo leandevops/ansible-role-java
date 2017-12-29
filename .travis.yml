@@ -4,22 +4,19 @@ python: '2.7'
 
 services: docker
 
-env:
-  - distro: centos7
-  - distro: ubuntu1604
+matrix:
+  include:
+    - env:
+        - distro: centos7
+        - init: "/usr/lib/systemd/systemd"
+        - opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - env:
+        - distro: ubuntu1604
+        - init: "/lib/systemd/systemd"
+        - opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 before_install:
-  - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible
-  - export container_id=$(date +%s)
-  - |
-    if [ $distro = 'centos7' ]; then
-      export init="/usr/lib/systemd/systemd"
-    fi
-  - |
-    if [ $distro = 'ubuntu1604' ]; then
-      export init="/lib/systemd/systemd"
-    fi
-  - export opts="--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - export repo=$DOCKERHUB_USERNAME/docker-$distro-ansible  
   
 script:
   # Download image
