@@ -10,10 +10,19 @@
   retries: 5
   delay: 10
 
-- name: List avalable java packages
-  shell: apt-cache policy java
-  register: result  
+- name: Accept Java 8 License
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
-- name: Debugging run
-  debug:
-    var: result
+- name: Install Oracle Java 8
+  apt:
+    name: "{{deb_package_name}}={{deb_package_version}}"
+    state: present
+    update_cache: "yes"
+
+# Environment setup.
+- name: Set JAVA_HOME if configured.
+  template:
+    src: java_home.sh.j2
+    dest: /etc/profile.d/java_home.sh
+    mode: 0644
+  when: debian_java_home is defined and debian_java_home != ''
