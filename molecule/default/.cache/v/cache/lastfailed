@@ -1,0 +1,4 @@
+{
+  "tests/test_default.py::test_java_binary[ansible://centos7-javac]": true, 
+  "tests/test_default.py::test_java_installed[ansible://centos7-jdk1\\.8\\.0_[0-9]+$]": true
+}
