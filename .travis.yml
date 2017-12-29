@@ -24,6 +24,8 @@ before_install:
   - sudo apt-get install -o Dpkg::Options::='--force-confold' --force-yes -y docker-ce
 
 install:
+  - pip install -r requirements.txt
+
   - .travis/before.sh
 
 script:
