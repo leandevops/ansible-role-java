@@ -4,7 +4,7 @@
 # Java version, supports:
 # 8u152
 # 8u151
-java_version: 8u152
+java_version: 8u141
 
 # jre / jdk
 jre_or_jdk: jre
