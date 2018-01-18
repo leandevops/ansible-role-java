@@ -5,12 +5,19 @@ galaxy_info:
   author: Andrey Larin
   description: Installs java for linux
   company: ""
-  license: ""
+  license: "license (BSD, MIT)"
   min_ansible_version: 2.0
   platforms:
-    - name: Centos
+    - name: EL
       versions:
         - 7
     - name: Ubuntu
       versions:
-        - 16.04
+        - xenial
+  galaxy_tags:
+    - system
+    - server
+    - java    
+    - jdk
+    - jre
+
