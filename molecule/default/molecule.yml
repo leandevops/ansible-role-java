@@ -10,7 +10,7 @@ lint:
 
 platforms:
   - name: centos7
-    image: lestex/centos7-systemd:latest
+    image: leandevopsio/centos7-systemd:latest
 
 provisioner:
   name: ansible

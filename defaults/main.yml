@@ -1,31 +1,12 @@
 ---
-#### Centos settings
-
-# Java version, supports:
-# 8u152
-# 8u151
-java_version: 8u141
 
 # jre / jdk
 jre_or_jdk: jre
 
-# JAVA_HOME env variable
-redhat_java_home: "/usr/java/"
-
 #### Debian settings
 deb_package_name: oracle-java8-installer
-
-# JAVA_HOME env variable
-debian_java_home: "/usr/lib/jvm/java-8-oracle"
 
 #### Common
 # if True installs rpm from oracle
 # if False installs from centos repos
-install_oracle_java: "True"
-
-# List of packages to install from repos:
-#   - java
-#   - java-1.7.0-openjdk
-#   - java-1.8.0-openjdk
-openjdk_packages:
-  - java-1.8.0-openjdk
+install_oracle_java: false

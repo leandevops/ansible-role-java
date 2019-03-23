@@ -16,14 +16,10 @@ def test_java_binary(host, command):
     assert '1.8.0_' in cmd.stderr
 
 
-@pytest.mark.parametrize('version_dir_pattern', [
-    '1\\.8\\.0_[0-9]+$'
-])
-def test_java_installed(host, version_dir_pattern):
+def test_java_installed(host):
 
-    java_home = host.check_output(
-                        'find `$JAVA_HOME` | grep --color=never -E %s',
-                        version_dir_pattern)
+    cmd = host.check_output('. /etc/profile && env | grep JAVA_HOME')
+    java_home = cmd.split("=")[1]
 
     java_bin = host.file(java_home + '/bin/java')
 

@@ -13,18 +13,15 @@ Available variables are listed below, along with default values:
 
 The role installs openjdk by default unless 'install_oracle_java' parameter is set to True.
 
-    install_oracle_java: False
+    install_oracle_java: false
 
-For some reason packages that heavily dependent on java won't work well with openjdk (cassandra for example) so please consider using oracle version.
 
 Packages to install, set the version/development kit of Java to install:
 
     java_packages:
-      - java-1.8.0-openjdk
+      - openjdk-8-jdk
 
-If set, the role will set the global environment variable `JAVA_HOME` to this value:
-
-    java_home: "/opt/java"
+The role will automatically set the `JAVA_HOME` environment variable.
 
 ### Dependencies
 
@@ -40,7 +37,7 @@ or put params needed inline::
 
     - hosts: servers
         roles:
-            - { role: java, install_oracle_java: False }
+            - { role: java, install_oracle_java: false }
 
 or put in requirements.yml
 
@@ -48,9 +45,8 @@ or put in requirements.yml
            version: v1.3
 
 ### License
+This code is released under the Apache 2.0 License. Please see [LICENSE](https://github.com/leandevops/ansible-role-java/blob/master/LICENSE) for more details.
 
-MIT/BSD
 
 ### Author Information
-
-Andrey Larin
+Copyright © 2019 LeanDevops.

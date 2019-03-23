@@ -1,12 +1,22 @@
 ---
-- name: Define java_packages.
+- name: Include version-specific variables for CentOS/RHEL.
+  include_vars: "redhat-{{ ansible_distribution_version.split('.')[0] }}.yml"
+  when: ansible_distribution == 'CentOS' or
+        ansible_distribution == 'Red Hat Enterprise Linux' or
+        ansible_distribution == 'RedHat'
+
+- name: Include version-specific variables for Ubuntu.
+  include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Define java_packages
   set_fact:
     java_packages: "{{ openjdk_packages | list }}"
-  when: openjdk_packages is not defined
+  when: openjdk_packages is defined
 
-- name: Installs openjdk Java.
-  package: "name={{ item }} state=installed"
-  with_items: "{{ openjdk_packages }}"
+- name: Installs openjdk Java
+  package: "name={{ item }} state=present"
+  with_items: "{{ java_packages }}"
   when: not install_oracle_java
 
 - name: Choose platform based task
@@ -16,3 +26,20 @@
     - not-supported.yml
   loop_control:
     loop_var: platform
+  when: install_oracle_java
+
+- name: Detect path for java
+  command: ls -l /etc/alternatives/java
+  register: result
+  changed_when: false
+
+- name: Define java_home
+  set_fact:
+    java_home: "{{ result.stdout.split(' ')[-1].replace('bin/java', '') }}"
+
+- name: Set JAVA_HOME if configured
+  template:
+    src: java_home.sh.j2
+    dest: /etc/profile.d/java_home.sh
+    mode: 0644
+  when: java_home is defined and java_home
