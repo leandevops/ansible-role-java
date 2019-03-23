@@ -10,7 +10,7 @@ lint:
 
 platforms:
   - name: docker-ubuntu1604-ansible
-    image: lestex/docker-ubuntu1604-ansible:latest
+    image: lestex/ubuntu1604-systemd:latest
 
 provisioner:
   name: ansible

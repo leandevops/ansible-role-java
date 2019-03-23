@@ -2,9 +2,9 @@
 dependencies: []
 
 galaxy_info:
-  author: Andrey Larin
+  author: Leandevops
   description: Installs java for linux
-  company: ""
+  company: "Leandevops"
   license: "license (BSD, MIT)"
   min_ansible_version: 2.0
   platforms:

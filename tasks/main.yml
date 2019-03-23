@@ -9,8 +9,10 @@
   with_items: "{{ openjdk_packages }}"
   when: not install_oracle_java
 
-- include_tasks: setup-RedHat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include_tasks: setup-Ubuntu.yml
-  when: ansible_os_family == 'Debian'
+- name: Choose platform based task
+  include_tasks: '{{ platform }}'
+  with_first_found:
+    - 'setup-{{ ansible_os_family }}.yml'
+    - not-supported.yml
+  loop_control:
+    loop_var: platform

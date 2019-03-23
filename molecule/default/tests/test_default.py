@@ -31,4 +31,3 @@ def test_java_installed(host, version_dir_pattern):
     assert java_bin.is_file
     assert java_bin.user == 'root'
     assert java_bin.group == 'root'
-    assert oct(java_bin.mode) == '0755'
