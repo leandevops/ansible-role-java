@@ -13,13 +13,16 @@ Available variables are listed below, along with default values:
 
 The role installs openjdk by default unless 'install_oracle_java' parameter is set to True.
 
+```yaml
     install_oracle_java: false
-
+```
 
 Packages to install, set the version/development kit of Java to install:
 
+```yaml
     java_packages:
       - openjdk-8-jdk
+```
 
 The role will automatically set the `JAVA_HOME` environment variable.
 
@@ -28,21 +31,24 @@ The role will automatically set the `JAVA_HOME` environment variable.
 None
 
 ### Example
-
+```yaml
     - hosts: servers
       roles:
         - java
+```
 
 or put params needed inline::
-
+```yaml
     - hosts: servers
         roles:
             - { role: java, install_oracle_java: false }
+```
 
 or put in requirements.yml
-
-    - src: git+git@github.com:lestex/ansible-role-java.git
-           version: v1.3
+```yaml
+    - src: git+git@github.com:leandevops/ansible-role-java.git
+        version: v1.0
+```
 
 ### License
 This code is released under the Apache 2.0 License. Please see [LICENSE](https://github.com/leandevops/ansible-role-java/blob/master/LICENSE) for more details.
