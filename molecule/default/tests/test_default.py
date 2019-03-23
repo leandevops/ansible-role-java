@@ -19,7 +19,7 @@ def test_java_binary(host, command):
 def test_java_installed(host):
 
     cmd = host.check_output('. /etc/profile && env | grep JAVA_HOME')
-    java_home = cmd.split("=")[1]
+    java_home = cmd.split('=')[1]
 
     java_bin = host.file(java_home + '/bin/java')
 
