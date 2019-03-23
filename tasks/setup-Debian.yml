@@ -1,7 +1,4 @@
 ---
-- name: Include version-specific variables for Ubuntu.
-  include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
-
 - name: Install WebUpd8 Team Java PPA (for Oracle Java)
   apt_repository: repo={{ java_ppa }} state=present
   when: install_oracle_java
@@ -18,11 +15,3 @@
     name: "{{ deb_package_name }}"
     state: present
     update_cache: "yes"
-
-# Environment setup.
-- name: Set JAVA_HOME if configured.
-  template:
-    src: java_home.sh.j2
-    dest: /etc/profile.d/java_home.sh
-    mode: 0644
-  when: debian_java_home is defined and debian_java_home | length > 0

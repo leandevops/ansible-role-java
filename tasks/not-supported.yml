@@ -3,4 +3,4 @@
   fail:
     msg: |
       This role does not support '{{ ansible_os_family }}' platform.
-      Please contact support@leandevops.io
+      Please contact leandevopsio@gmail.com

@@ -1,9 +1,2 @@
 #{{ ansible_managed }}
-
-{% if ansible_os_family | lower == 'redhat' %}
-    export JAVA_HOME={{ redhat_java_home }}
-{% elif ansible_os_family | lower == 'debian' %}
-    export JAVA_HOME={{ debian_java_home }}
-{% else %}
-    export JAVA_HOME=''
-{% endif %}
+export JAVA_HOME={{ java_home }}
