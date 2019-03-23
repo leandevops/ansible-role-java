@@ -1,5 +1,4 @@
 ---
-
 - name: Include version-specific variables for CentOS.
   include_vars: "{{ ansible_distribution | lower }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
 
@@ -16,10 +15,9 @@
     state: present
   when: install_oracle_java
 
-# Environment setup.
 - name: Set JAVA_HOME if configured.
   template:
     src: java_home.sh.j2
     dest: /etc/profile.d/java_home.sh
     mode: 0644
-  when: redhat_java_home is defined and redhat_java_home != ''
+  when: redhat_java_home is defined and redhat_java_home | length > 0

@@ -14,7 +14,6 @@ redhat_java_home: "/usr/java/"
 
 #### Debian settings
 deb_package_name: oracle-java8-installer
-deb_package_version: 8u151-1~webupd8~0
 
 # JAVA_HOME env variable
 debian_java_home: "/usr/lib/jvm/java-8-oracle"

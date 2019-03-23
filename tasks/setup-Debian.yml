@@ -15,7 +15,7 @@
 
 - name: Install Oracle Java 8
   apt:
-    name: "{{deb_package_name}}={{deb_package_version}}"
+    name: "{{ deb_package_name }}"
     state: present
     update_cache: "yes"
 
@@ -25,4 +25,4 @@
     src: java_home.sh.j2
     dest: /etc/profile.d/java_home.sh
     mode: 0644
-  when: debian_java_home is defined and debian_java_home != ''
+  when: debian_java_home is defined and debian_java_home | length > 0
