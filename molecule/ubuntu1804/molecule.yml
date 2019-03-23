@@ -1,0 +1,32 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+lint:
+  name: yamllint
+
+platforms:
+  - name: ubuntu1804
+    image: leandevopsio/ubuntu1804-systemd:latest
+
+provisioner:
+  name: ansible
+  playbooks:
+    create: ../default/create.yml
+    destroy: ../default/destroy.yml
+    converge: ../default/playbook.yml
+    prepare: ../default/prepare.yml
+  lint:
+    name: ansible-lint
+
+scenario:
+  name: ubuntu1804
+
+verifier:
+  name: testinfra
+  directory: ../default/tests
+  lint:
+    name: flake8

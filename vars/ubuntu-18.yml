@@ -1,0 +1,9 @@
+---
+# ppa repository
+java_ppa: ppa:webupd8team/java
+
+# JAVA_HOME env variable
+# java_home: "/usr/lib/jvm/java-8-openjdk-amd64/jre"
+
+openjdk_packages:
+  - openjdk-8-jdk
