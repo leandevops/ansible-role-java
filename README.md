@@ -49,7 +49,7 @@ or put in requirements.yml
 
 ### License
 
-MIT/BSD
+Apache 2
 
 ### Author Information
 
