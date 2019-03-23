@@ -9,8 +9,8 @@ lint:
   name: yamllint
 
 platforms:
-  - name: docker-ubuntu1604-ansible
-    image: lestex/ubuntu1604-systemd:latest
+  - name: ubuntu1604
+    image: leandevopsio/ubuntu1604-systemd:latest
 
 provisioner:
   name: ansible
@@ -19,8 +19,6 @@ provisioner:
     destroy: ../default/destroy.yml
     converge: ../default/playbook.yml
     prepare: ../default/prepare.yml
-    #  options:
-    #    vvv: 'True'
   lint:
     name: ansible-lint
 
@@ -29,5 +27,6 @@ scenario:
 
 verifier:
   name: testinfra
+  directory: ../default/tests
   lint:
     name: flake8
