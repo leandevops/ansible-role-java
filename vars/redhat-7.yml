@@ -10,3 +10,9 @@ urls:
 
 download_dir: /tmp
 download_file: "{{ urls[java_version].split('/')[-1] }}"
+
+openjdk_packages:
+  - java-1.8.0-openjdk
+
+# JAVA_HOME env variable
+# java_home: "/usr/java/"
